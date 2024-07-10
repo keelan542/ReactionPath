@@ -7,7 +7,7 @@ test_path = {"R" : 0.0, "I1": 5.0, "TS1" : 30.0, "P" : -20.0}
 
 # Creating xy coordinates for drawing reaction path
 points = []
-position = 0.0
+position = 0.5
 for point in test_path:
     points.append((position, test_path[point]))
     points.append((position+0.25, test_path[point]))
@@ -19,7 +19,9 @@ fig, ax = plt.subplots()
 # Defining limits of plot
 min_energy = min(test_path.values())
 max_energy = max(test_path.values())
-ax.set_xlim(-1, 2)
+plot_width = 0.75 * len(test_path) - 0.5
+ax.set_xlim(0.25, plot_width)
+print(plot_width)
 ax.set_ylim(min_energy - 5.0, max_energy + 5.0)
 
 # Some aesthetic stuff
