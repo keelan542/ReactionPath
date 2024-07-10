@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 from matplotlib.path import Path
 
 # Dictionaries storing pathways
@@ -27,5 +28,12 @@ ax.tick_params(axis='x', which='both', bottom=False, labelbottom=False)
 ax.set_xlabel("Reaction Coordinate")
 ax.set_ylabel(r"G kcal / mole$^{-1}$")
 ax.plot(1.0, 0, '>k', transform=ax.transAxes, clip_on=False)
+
+# Draw dashed connector lines first
+codes = [Path.MOVETO]
+codes.extend([Path.LINETO] * (len(points)-1))
+dashed_path = Path(points, codes)
+patch = patches.PathPatch(dashed_path, facecolor="none", lw=1, linestyle="--")
+ax.add_patch(patch)
 
 plt.show()
