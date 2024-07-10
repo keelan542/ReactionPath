@@ -42,7 +42,15 @@ ax.add_patch(patch)
 codes = [Path.MOVETO, Path.LINETO]
 for i in range(0, len(points), 2):
     path = Path(points[i:i+2], codes)
-    patch = patches.PathPatch(path, facecolor="none", lw=3)
+    patch = patches.PathPatch(path, facecolor="none", lw=2)
     ax.add_patch(patch)
+
+# Adding labels to points
+current_label = 0.625
+label_positions = [current_label]
+ax.text(current_label, test_path["R"], "R", horizontalalignment="center", verticalalignment="top")
+for i in range(len(test_path)-1):
+    current_label += 1.0
+    label_positions.append(current_label)
 
 plt.show()
