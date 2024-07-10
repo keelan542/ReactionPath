@@ -36,4 +36,11 @@ dashed_path = Path(points, codes)
 patch = patches.PathPatch(dashed_path, facecolor="none", lw=1, linestyle="--")
 ax.add_patch(patch)
 
+# Draw stationary point bolded lines next
+codes = [Path.MOVETO, Path.LINETO]
+for i in range(0, len(points), 2):
+    path = Path(points[i:i+2], codes)
+    patch = patches.PathPatch(path, facecolor="none", lw=3)
+    ax.add_patch(patch)
+
 plt.show()
