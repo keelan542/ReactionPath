@@ -12,4 +12,20 @@ for point in test_path:
     points.append((position+0.25, test_path[point]))
     position += 0.5
 
-print(points)
+# Creating figure and axes
+fig, ax = plt.subplots()
+
+# Defining limits of plot
+min_energy = min(test_path.values())
+max_energy = max(test_path.values())
+ax.set_xlim(-1, 2)
+ax.set_ylim(min_energy - 5.0, max_energy + 5.0)
+
+# Some aesthetic stuff
+ax.spines[['right', 'top']].set_visible(False)
+ax.tick_params(axis='x', which='both', bottom=False, labelbottom=False)
+ax.set_xlabel("Reaction Coordinate")
+ax.set_ylabel(r"G kcal / mole$^{-1}$")
+ax.plot(1.0, 0, '>k', transform=ax.transAxes, clip_on=False)
+
+plt.show()
