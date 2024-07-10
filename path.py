@@ -30,6 +30,7 @@ ax.tick_params(axis='x', which='both', bottom=False, labelbottom=False)
 ax.set_xlabel("Reaction Coordinate")
 ax.set_ylabel(r"G kcal / mole$^{-1}$")
 ax.plot(1.0, 0, '>k', transform=ax.transAxes, clip_on=False)
+ax.plot(0, 1.0, '^k', transform=ax.transAxes, clip_on=False)
 
 # Draw dashed connector lines first
 codes = [Path.MOVETO]
