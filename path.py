@@ -47,10 +47,8 @@ for i in range(0, len(points), 2):
 
 # Adding labels to points
 current_label = 0.625
-label_positions = [current_label]
-ax.text(current_label, test_path["R"], "R", horizontalalignment="center", verticalalignment="top")
-for i in range(len(test_path)-1):
-    current_label += 1.0
-    label_positions.append(current_label)
+for label, energy in test_path.items():
+    ax.text(current_label, energy, label, horizontalalignment="center", verticalalignment="bottom")
+    current_label += 0.5
 
 plt.show()
