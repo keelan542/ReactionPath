@@ -20,6 +20,6 @@ def plot_reaction_profile(energies, labels=None, energy_buffer=5.0):
 ```
 - energies: List of energies
 - labels: List of labels (Default=None)
-- energy_buffer: How much space to give above and below reaction profile i.e. setting y-limits.
+- energy_buffer: How much space to give above and below reaction profile i.e. setting y-limits. (Default = 5.0)
 
 Requires Matplotlib.
