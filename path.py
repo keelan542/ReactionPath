@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.path import Path
 
-def plot_reaction_profile(energies, labels=None):
+def plot_reaction_profile(energies, labels=None, energy_buffer=5.0):
     # Creating xy coordinates for drawing reaction path
     points = []
     position = 0.5
@@ -19,7 +19,7 @@ def plot_reaction_profile(energies, labels=None):
     max_energy = max(energies)
     plot_width = 0.75 * len(energies) - 0.5
     ax.set_xlim(0.25, plot_width)
-    ax.set_ylim(min_energy - 5.0, max_energy + 5.0)
+    ax.set_ylim(min_energy - energy_buffer, max_energy + energy_buffer)
 
     # Some aesthetic stuff
     ax.spines[['right', 'top']].set_visible(False)
