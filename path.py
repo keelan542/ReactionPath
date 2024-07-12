@@ -2,13 +2,13 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.path import Path
 
-def plot_reaction_profile(energies, labels=None, energy_buffer=5.0):
+def plot_reaction_profile(energies, labels=None, point_width=0.25, point_distance=0.5):
     # Creating xy coordinates for drawing reaction path
     points = []
     position = 0.5
     for point in energies:
         points.append((position, point))
-        points.append((position + 0.25, point))
+        points.append((position + point_width, point))
         position += 0.5
 
     # Creating figure and axes
@@ -17,9 +17,9 @@ def plot_reaction_profile(energies, labels=None, energy_buffer=5.0):
     # Defining limits of plot
     min_energy = min(energies)
     max_energy = max(energies)
-    plot_width = 0.75 * len(energies) - 0.5
-    ax.set_xlim(0.25, plot_width)
-    ax.set_ylim(min_energy - energy_buffer, max_energy + energy_buffer)
+    plot_width = (len(energies) * point_width) + ((len(energies) - 1) * point_distance)
+    ax.set_xlim(0, plot_width)
+    ax.margins(0.05, 0.05)
 
     # Some aesthetic stuff
     ax.spines[['right', 'top']].set_visible(False)
