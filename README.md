@@ -3,13 +3,6 @@ A simple Python script to automate the drawing of a reaction profile.
 
 Requires Matplotlib.
 
-### Options
-```
-def plot_reaction_profile(energies, labels=None, label_offset=0.5, title=None, 
-                          point_width=0.25, point_distance=0.5, x_margin=0.05, y_margin=0.05,
-                          point_linewidth=3, connector_linewidth=1):
-```
-
 ### Example Inputs
 ```
 import path
@@ -32,3 +25,23 @@ path.plot_reaction_profile(energies, labels=labels, point_linewidth=1, connector
 ![Example Plot](examples/example3.png)
 
 ![Example Plot](examples/example4.png)
+
+### Options
+```
+def plot_reaction_profile(energies, labels=None, label_offset=0.5, title=None, 
+                          point_width=0.25, point_distance=0.5, x_margin=0.05, y_margin=0.05,
+                          point_linewidth=3, connector_linewidth=1):
+```
+
+| Argument            | Explanation                                      |
+|---------------------|--------------------------------------------------|
+| energies            | List of energies                                 |
+| labels              | List of labels                                   |
+| label_offset        | How much to offset labels from point             |
+| title               | Title of plot                                    |
+| point_width         | Width of stationary point horizontal line        |
+| point_distance      | Distance between stationary points               |
+| x_margin            | How much margin to put on left and right of plot |
+| y_margin            | How much margin to put on top and bottom of plot |
+| point_linewidth     | Linewidth of stationary point horizontal line    |
+| connector_linewidth | Linewidth of dashed connector lines              |
