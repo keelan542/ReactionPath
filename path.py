@@ -2,7 +2,8 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.path import Path
 
-def plot_reaction_profile(energies, labels=None, point_width=0.25, point_distance=0.5, x_margin=0.05, y_margin=0.05):
+def plot_reaction_profile(energies, labels=None, label_offset=0.5, point_width=0.25, point_distance=0.5, x_margin=0.05, y_margin=0.05,
+                          point_linewidth=3, connector_linewidth=1):
     # Creating xy coordinates for drawing reaction path
     points = []
     position = 0.0
@@ -27,21 +28,21 @@ def plot_reaction_profile(energies, labels=None, point_width=0.25, point_distanc
     codes = [Path.MOVETO]
     codes.extend([Path.LINETO] * (len(points)-1))
     dashed_path = Path(points, codes)
-    patch = patches.PathPatch(dashed_path, facecolor="none", lw=1, linestyle="--", alpha=0.6)
+    patch = patches.PathPatch(dashed_path, facecolor="none", lw=connector_linewidth, linestyle="--", alpha=0.6)
     ax.add_patch(patch)
 
     # Draw stationary point bolded lines next
     codes = [Path.MOVETO, Path.LINETO]
     for i in range(0, len(points), 2):
         path = Path(points[i:i+2], codes)
-        patch = patches.PathPatch(path, facecolor="none", lw=3)
+        patch = patches.PathPatch(path, facecolor="none", lw=point_linewidth)
         ax.add_patch(patch)
 
     # Adding labels to points if provided
     if labels is not None:
         current_position = (point_width / 2)
         for label, energy in zip(labels, energies):
-            ax.text(current_position, energy, label, horizontalalignment="center", verticalalignment="bottom")
+            ax.text(current_position, energy + label_offset, label, horizontalalignment="center", verticalalignment="bottom")
             current_position = current_position + point_width + point_distance
 
     plt.show()
