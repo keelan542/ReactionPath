@@ -21,7 +21,7 @@ def plot_reaction_profile(energies, labels=None, label_offset=0.5, title=None,
     ax.spines[['right', 'top']].set_visible(False)
     ax.tick_params(axis='x', which='both', bottom=False, labelbottom=False)
     ax.set_xlabel("Reaction Coordinate")
-    ax.set_ylabel(r"$\Delta$G kcal mole$^{-1}$")
+    ax.set_ylabel(r"$\Delta$G kcal mol$^{-1}$")
     ax.plot(1.0, 0, '>k', transform=ax.transAxes, clip_on=False)
     ax.plot(0, 1.0, '^k', transform=ax.transAxes, clip_on=False)
     ax.margins(x_margin, y_margin)
