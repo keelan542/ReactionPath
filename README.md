@@ -10,7 +10,7 @@ def plot_reaction_profile(energies, labels=None, label_offset=0.5, title=None,
                           point_linewidth=3, connector_linewidth=1):
 ```
 
-### Examples
+### Example Inputs
 ```
 import path
 
@@ -24,7 +24,7 @@ path.plot_reaction_profile(energies, labels=labels, point_linewidth=1, connector
 
 ```
 
-Example Outputs:
+### Example Outputs:
 ![Example Plot](example1.png)
 
 ![Example Plot](example2.png)
