@@ -3,7 +3,7 @@ import matplotlib.patches as patches
 from matplotlib.path import Path
 
 # Dictionaries storing pathways
-test_path = {"R" : 0.0, "I1": 5.0, "TS1" : 30.0, "P" : -20.0}
+test_path = {"R" : 0.0, "I1": 5.0, "TS1" : 30.0, "I2" : -20.0, "TS2" : 10.0, "I3" : -30.0, "TS4" : 5.0, "P" : -40.0}
 
 # Creating xy coordinates for drawing reaction path
 points = []
@@ -36,14 +36,14 @@ ax.plot(0, 1.0, '^k', transform=ax.transAxes, clip_on=False)
 codes = [Path.MOVETO]
 codes.extend([Path.LINETO] * (len(points)-1))
 dashed_path = Path(points, codes)
-patch = patches.PathPatch(dashed_path, facecolor="none", lw=1, linestyle="--")
+patch = patches.PathPatch(dashed_path, facecolor="none", lw=1, linestyle="--", alpha=0.6)
 ax.add_patch(patch)
 
 # Draw stationary point bolded lines next
 codes = [Path.MOVETO, Path.LINETO]
 for i in range(0, len(points), 2):
     path = Path(points[i:i+2], codes)
-    patch = patches.PathPatch(path, facecolor="none", lw=2)
+    patch = patches.PathPatch(path, facecolor="none", lw=3)
     ax.add_patch(patch)
 
 # Adding labels to points
