@@ -1,6 +1,6 @@
 Simple Python script to automate the drawing of a reacion profile.
 
-Usage:
+Example Usage:
 ```
 import path
 
@@ -13,5 +13,13 @@ path.plot_reaction_profile(energies=energies, labels=labels)
 
 Example Output:
 ![Example Plot](example_plot.png)
+
+All Current Options:
+```
+def plot_reaction_profile(energies, labels=None, energy_buffer=5.0):
+```
+energies: List of energies
+labels: List of labels (Default=None)
+energy_buffer: How much space to give above and below reaction profile i.e. setting y-limits.
 
 Requires Matplotlib.
