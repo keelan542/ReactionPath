@@ -25,10 +25,10 @@ path.plot_reaction_profile(energies, labels=labels, point_linewidth=1, connector
 ```
 
 ### Example Outputs:
-![Example Plot](example1.png)
+![Example Plot](examples/example1.png)
 
-![Example Plot](example2.png)
+![Example Plot](examples/example2.png)
 
-![Example Plot](example3.png)
+![Example Plot](examples/example3.png)
 
-![Example Plot](example4.png)
+![Example Plot](examples/example4.png)
