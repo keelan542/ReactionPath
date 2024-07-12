@@ -17,9 +17,9 @@ path.plot_reaction_profile(energies, labels=labels, point_width=2.5,
 ```
 
 ### Example Outputs:
-![Example Plot](examples/example1.png)
+![Example Plot 1](examples/example1.png)
 
-![Example Plot](examples/example2.png)
+![Example Plot 2](examples/example2.png)
 
 ### Options
 ```
