@@ -9,16 +9,10 @@ def plot_reaction_profile(energies, labels=None, point_width=0.25, point_distanc
     for point in energies:
         points.append((left_space, point))
         points.append((left_space + point_width, point))
-        left_space += 0.5
+        left_space += point_distance
 
     # Creating figure and axes
     fig, ax = plt.subplots()
-
-    # Defining limits of plot
-    min_energy = min(energies)
-    max_energy = max(energies)
-    plot_width = (len(energies) * point_width) + ((len(energies) - 1) * point_distance)
-    ax.set_xlim(0, plot_width)
 
     # Some aesthetic stuff
     ax.spines[['right', 'top']].set_visible(False)
