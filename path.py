@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.path import Path
 
-def plot_reaction_profile(labels, energies):
+def plot_reaction_profile(energies, labels=None):
     # Creating xy coordinates for drawing reaction path
     points = []
     position = 0.5
@@ -43,10 +43,11 @@ def plot_reaction_profile(labels, energies):
         patch = patches.PathPatch(path, facecolor="none", lw=3)
         ax.add_patch(patch)
 
-    # Adding labels to points
-    current_label = 0.625
-    for label, energy in zip(labels, energies):
-        ax.text(current_label, energy, label, horizontalalignment="center", verticalalignment="bottom")
-        current_label += 0.5
+    # Adding labels to points if provided
+    if labels is not None:
+        current_label = 0.625
+        for label, energy in zip(labels, energies):
+            ax.text(current_label, energy, label, horizontalalignment="center", verticalalignment="bottom")
+            current_label += 0.5
 
     plt.show()
