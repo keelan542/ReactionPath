@@ -5,11 +5,11 @@ from matplotlib.path import Path
 def plot_reaction_profile(energies, labels=None, point_width=0.25, point_distance=0.5):
     # Creating xy coordinates for drawing reaction path
     points = []
-    position = 0.5
+    left_space = 0.5
     for point in energies:
-        points.append((position, point))
-        points.append((position + point_width, point))
-        position += 0.5
+        points.append((left_space, point))
+        points.append((left_space + point_width, point))
+        left_space += 0.5
 
     # Creating figure and axes
     fig, ax = plt.subplots()
@@ -19,7 +19,6 @@ def plot_reaction_profile(energies, labels=None, point_width=0.25, point_distanc
     max_energy = max(energies)
     plot_width = (len(energies) * point_width) + ((len(energies) - 1) * point_distance)
     ax.set_xlim(0, plot_width)
-    ax.margins(0.05, 0.05)
 
     # Some aesthetic stuff
     ax.spines[['right', 'top']].set_visible(False)
