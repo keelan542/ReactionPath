@@ -2,10 +2,9 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.path import Path
 
-def plot_reaction_profile(energies, labels=None, point_width=0.25, point_distance=0.5):
+def plot_reaction_profile(energies, labels=None, point_width=0.25, point_distance=0.5, left_space = 0.5):
     # Creating xy coordinates for drawing reaction path
     points = []
-    left_space = 0.5
     for point in energies:
         points.append((left_space, point))
         points.append((left_space + point_width, point))
