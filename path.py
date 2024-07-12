@@ -2,10 +2,10 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.path import Path
 
-def plot_reaction_profile(energies, labels=None, point_width=0.25, point_distance=0.5, start = 0.5):
+def plot_reaction_profile(energies, labels=None, point_width=0.25, point_distance=0.5, x_margin=0.05, y_margin=0.05):
     # Creating xy coordinates for drawing reaction path
     points = []
-    position = start
+    position = 0.0
     for point in energies:
         points.append((position, point))
         points.append((position + point_width, point))
@@ -21,6 +21,7 @@ def plot_reaction_profile(energies, labels=None, point_width=0.25, point_distanc
     ax.set_ylabel(r"$\Delta$G kcal mole$^{-1}$")
     ax.plot(1.0, 0, '>k', transform=ax.transAxes, clip_on=False)
     ax.plot(0, 1.0, '^k', transform=ax.transAxes, clip_on=False)
+    ax.margins(x_margin, y_margin)
 
     # Draw dashed connector lines first
     codes = [Path.MOVETO]
@@ -38,7 +39,7 @@ def plot_reaction_profile(energies, labels=None, point_width=0.25, point_distanc
 
     # Adding labels to points if provided
     if labels is not None:
-        current_position = start + (point_width / 2)
+        current_position = (point_width / 2)
         for label, energy in zip(labels, energies):
             ax.text(current_position, energy, label, horizontalalignment="center", verticalalignment="bottom")
             current_position = current_position + point_width + point_distance
