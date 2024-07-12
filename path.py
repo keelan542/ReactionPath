@@ -2,13 +2,14 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.path import Path
 
-def plot_reaction_profile(energies, labels=None, point_width=0.25, point_distance=0.5, left_space = 0.5):
+def plot_reaction_profile(energies, labels=None, point_width=0.25, point_distance=0.5, start = 0.5):
     # Creating xy coordinates for drawing reaction path
     points = []
+    position = start
     for point in energies:
-        points.append((left_space, point))
-        points.append((left_space + point_width, point))
-        left_space += point_distance
+        points.append((position, point))
+        points.append((position + point_width, point))
+        position += (point_width + point_distance)
 
     # Creating figure and axes
     fig, ax = plt.subplots()
@@ -37,9 +38,11 @@ def plot_reaction_profile(energies, labels=None, point_width=0.25, point_distanc
 
     # Adding labels to points if provided
     if labels is not None:
-        current_label = 0.625
+        current_position = start + (point_width / 2)
+        print(current_position)
         for label, energy in zip(labels, energies):
-            ax.text(current_label, energy, label, horizontalalignment="center", verticalalignment="bottom")
-            current_label += 0.5
+            ax.text(current_position, energy, label, horizontalalignment="center", verticalalignment="bottom")
+            current_position = current_position + point_width + point_distance
+            print(current_position)
 
     plt.show()
