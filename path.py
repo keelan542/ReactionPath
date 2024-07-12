@@ -2,8 +2,10 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.path import Path
 
-def plot_reaction_profile(energies, labels=None, label_offset=0.5, point_width=0.25, point_distance=0.5, x_margin=0.05, y_margin=0.05,
+def plot_reaction_profile(energies, labels=None, label_offset=0.5, title=None,
+                          point_width=0.25, point_distance=0.5, x_margin=0.05, y_margin=0.05,
                           point_linewidth=3, connector_linewidth=1):
+
     # Creating xy coordinates for drawing reaction path
     points = []
     position = 0.0
@@ -23,6 +25,8 @@ def plot_reaction_profile(energies, labels=None, label_offset=0.5, point_width=0
     ax.plot(1.0, 0, '>k', transform=ax.transAxes, clip_on=False)
     ax.plot(0, 1.0, '^k', transform=ax.transAxes, clip_on=False)
     ax.margins(x_margin, y_margin)
+    if title is not None:
+        ax.set_title(title)
 
     # Draw dashed connector lines first
     codes = [Path.MOVETO]

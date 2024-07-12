@@ -1,25 +1,34 @@
-Simple Python script to automate the drawing of a reacion profile.
+## ReactionPath
+A simple Python script to automate the drawing of a reaction profile.
 
-Example Usage:
+Requires Matplotlib.
+
+### Options
+```
+def plot_reaction_profile(energies, labels=None, label_offset=0.5, title=None, 
+                          point_width=0.25, point_distance=0.5, x_margin=0.05, y_margin=0.05,
+                          point_linewidth=3, connector_linewidth=1):
+```
+
+### Examples
 ```
 import path
 
 labels = ["R","I1","TS1","I2","TS2","I3","TS3","I4","P"]
 energies = [0.0, 5.0, 30.0, -20.0, 10.0, -30.0, 5.0, -40.0]
 
-path.plot_reaction_profile(energies=energies, labels=labels)
+path.plot_reaction_profile(energies, labels=labels, title="Example 1")
+path.plot_reaction_profile(energies, labels=labels, point_width=1.0, title="Example 2")
+path.plot_reaction_profile(energies, labels=labels, point_width=1.0, point_distance=3.0, title="Example 3")
+path.plot_reaction_profile(energies, labels=labels, point_linewidth=1, connector_linewidth=0.5, title="Example 4")
 
 ```
 
-Example Output:
-![Example Plot](example_plot.png)
+Example Outputs:
+![Example Plot](example1.png)
 
-All Current Options:
-```
-def plot_reaction_profile(energies, labels=None, energy_buffer=5.0):
-```
-- energies: List of energies
-- labels: List of labels (Default=None)
-- energy_buffer: How much space to give above and below reaction profile i.e. setting y-limits. (Default = 5.0)
+![Example Plot](example2.png)
 
-Requires Matplotlib.
+![Example Plot](example3.png)
+
+![Example Plot](example4.png)
