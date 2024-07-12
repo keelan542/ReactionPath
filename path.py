@@ -39,10 +39,8 @@ def plot_reaction_profile(energies, labels=None, point_width=0.25, point_distanc
     # Adding labels to points if provided
     if labels is not None:
         current_position = start + (point_width / 2)
-        print(current_position)
         for label, energy in zip(labels, energies):
             ax.text(current_position, energy, label, horizontalalignment="center", verticalalignment="bottom")
             current_position = current_position + point_width + point_distance
-            print(current_position)
 
     plt.show()
