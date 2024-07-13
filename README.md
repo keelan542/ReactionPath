@@ -29,7 +29,7 @@ path.plot_reaction_profile(energies, labels=labels, label_fontweight="bold", tit
 | energies            | List of energies (list of floats)                                 | -                            |
 | labels              | List of labels (list of strings)                                  | None                         |
 | title               | Title of plot (string)                                            | None                         |
-| figsize             | Size of figure (tuple (width,height) in inches)                   | (8,6)                        |
+| figsize             | Size of figure (tuple (width,height) in inches)                   | (7,5)                        |
 | save_file           | Name of image to be saved (string) - Will not save if None        | None                         |
 | show_plot           | Whether to show plot (boolean)                                    | True                         |
 | label_offset        | How much to offset labels from point (float)                      | 0.5                          |
