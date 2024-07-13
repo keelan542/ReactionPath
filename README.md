@@ -31,6 +31,7 @@ path.plot_reaction_profile(energies, labels=labels, label_fontweight="bold", tit
 | title               | Title of plot (string)                                            | None                         |
 | figsize             | Size of figure (tuple (width,height) in inches)                   | (8,6)                        |
 | save_file           | Name of image to be saved (string) - Will not save if None        | None                         |
+| show_plot           | Whether to show plot (boolean)                                    | True                         |
 | label_offset        | How much to offset labels from point (float)                      | 0.5                          |
 | label_fontweight    | Weight of stationary point label text (Matplotlib valid option)   | "normal"                     |
 | label_fontsize      | Fontsize of stationary point label text (Matplotlib valid option) | 10                           |

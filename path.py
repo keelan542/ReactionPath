@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.path import Path
 
-def plot_reaction_profile(energies, labels=None, title=None, figsize=(8,6), save_file=None,
+def plot_reaction_profile(energies, labels=None, title=None, figsize=(8,6), save_file=None, show_plot=True,
                           label_offset=0.5, label_fontweight="normal", label_fontsize=10, x_margin=0.05,
                           y_margin=0.05, x_label="Reaction Coordinate", x_label_fontweight="normal", x_label_fontsize=10, x_label_color="black",
                           y_label=r"$\Delta$G kcal mol$^{-1}$", y_label_fontweight="normal", y_label_fontsize=10, y_label_color="black", point_color="black",
@@ -56,4 +56,5 @@ def plot_reaction_profile(energies, labels=None, title=None, figsize=(8,6), save
     if save_file is not None:
         plt.savefig(save_file)
 
-    plt.show()
+    if show_plot:
+        plt.show()
