@@ -53,7 +53,7 @@ def plot_reaction_profile(energies, labels=None, title=None, figsize=(8,6), save
                     verticalalignment="bottom", fontweight=label_fontweight, size=label_fontsize)
             current_position = current_position + point_width + point_distance
 
-    if filename is not None:
-        plt.savefig(filename)
+    if save_file is not None:
+        plt.savefig(save_file)
 
     plt.show()
