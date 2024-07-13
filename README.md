@@ -29,6 +29,9 @@ path.plot_reaction_profile(energies, labels=labels, label_fontweight="bold", tit
 | energies            | List of energies (list of floats)                                 | -                            |
 | labels              | List of labels (list of strings)                                  | None                         |
 | title               | Title of plot (string)                                            | None                         |
+| title_fontweight    | Weight of title (Matplotlib valid option)                         | "normal"                     |
+| title_fontsize      | Fontsize of title (Matplotlib valid option)                       | 10                           |
+| title_color         | Color of title (Matplotlib valid option)                          | "black"                      |
 | figsize             | Size of figure (tuple (width,height) in inches)                   | (7,5)                        |
 | save_file           | Name of image to be saved (string) - Will not save if None        | None                         |
 | show_plot           | Whether to show plot (boolean)                                    | True                         |

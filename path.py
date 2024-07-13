@@ -2,7 +2,8 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.path import Path
 
-def plot_reaction_profile(energies, labels=None, title=None, figsize=(7,5), save_file=None, show_plot=True,
+def plot_reaction_profile(energies, labels=None, title=None, title_fontweight="normal", title_fontsize=10,
+                          title_color="black", figsize=(7,5), save_file=None, show_plot=True,
                           label_offset=0.5, label_fontweight="normal", label_fontsize=10, x_margin=0.05,
                           y_margin=0.05, x_label="Reaction Coordinate", x_label_fontweight="normal", x_label_fontsize=10, x_label_color="black",
                           y_label=r"$\Delta$G kcal mol$^{-1}$", y_label_fontweight="normal", y_label_fontsize=10, y_label_color="black", point_color="black",
@@ -28,7 +29,7 @@ def plot_reaction_profile(energies, labels=None, title=None, figsize=(7,5), save
     ax.plot(1.0, 0, '>k', transform=ax.transAxes, clip_on=False)
     ax.plot(0, 1.0, '^k', transform=ax.transAxes, clip_on=False)
     ax.margins(x_margin, y_margin)
-    ax.set_title(title)
+    ax.set_title(title, fontweight=title_fontweight, size=title_fontsize, color=title_color)
 
     # Draw dashed connector lines first
     codes = [Path.MOVETO]
