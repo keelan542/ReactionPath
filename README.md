@@ -36,7 +36,13 @@ path.plot_reaction_profile(energies, labels=labels, label_fontweight="bold", tit
 | x_margin            | How much margin to put on left and right of plot (float)          | 0.05                         |
 | y_margin            | How much margin to put on top and bottom of plot (float)          | 0.05                         |
 | x_label             | X-axis label (string)                                             | "Reaction Coordinate"        |
+| x_label_fontweight  | Weight of X-axis label (Matplotlib valid option)                  | "normal"                     |
+| x_label_fontsize    | Fontsize of X-axis label (Matplotlib valid option)                | 10                           |
+| x_label_color       | Color of X-axis label (Matplotlib valid option)                   | "black"                      |
 | y_label             | Y-axis label (string)                                             | r"$\Delta$G kcal mol$^{-1}$" |
+| y_label_fontweight  | Weight of Y-axis label (Matplotlib valid option)                  | "normal"                     |
+| y_label_fontsize    | Fontsize of Y-axis label (Matplotlib valid option)                | 10                           |
+| y_label_color       | Color of Y-axis label (Matplotlib valid option)                   | "black"                      |
 | point_color         | Color of stationary point (any Matplotlib color)                  | "black"                      |
 | point_alpha         | Opacity of stationary point (0.0 --> 1.0)                         | 1.0                          |
 | point_width         | Width of stationary point (float)                                 | 0.25                         |
