@@ -3,10 +3,10 @@ import matplotlib.patches as patches
 from matplotlib.path import Path
 
 def plot_reaction_profile(energies, labels=None, title=None, figsize=(8,6),
-                          label_offset=0.5, label_fontweight="normal", x_margin=0.05, y_margin=0.05,
-                          x_label="Reaction Coordinate", y_label=r"$\Delta$G kcal mol$^{-1}$", point_color="black", point_alpha=1.0,
-                          point_width=0.25, point_distance=0.5, point_linewidth=3, connector_color="black",
-                          connector_alpha=0.6, connector_linewidth=1, connector_linestyle="--"):
+                          label_offset=0.5, label_fontweight="normal", label_fontsize=10, x_margin=0.05,
+                          y_margin=0.05, x_label="Reaction Coordinate", y_label=r"$\Delta$G kcal mol$^{-1}$", point_color="black",
+                          point_alpha=1.0, point_width=0.25, point_distance=0.5, point_linewidth=3,
+                          connector_color="black", connector_alpha=0.6, connector_linewidth=1, connector_linestyle="--"):
 
     # Creating xy coordinates for drawing reaction path
     points = []
@@ -49,7 +49,7 @@ def plot_reaction_profile(energies, labels=None, title=None, figsize=(8,6),
         current_position = (point_width / 2)
         for label, energy in zip(labels, energies):
             ax.text(current_position, energy + label_offset, label, horizontalalignment="center",
-                    verticalalignment="bottom", fontweight=label_fontweight)
+                    verticalalignment="bottom", fontweight=label_fontweight, size=label_fontsize)
             current_position = current_position + point_width + point_distance
 
     plt.show()
