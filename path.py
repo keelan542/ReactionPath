@@ -6,7 +6,8 @@ def plot_reaction_profile(energies, labels=None, title=None, title_fontweight="n
                           title_color="black", figsize=(7,5), save_file=None, show_plot=True,
                           label_offset=0.5, label_fontweight="normal", label_fontsize=10, label_color="black", x_margin=0.05,
                           y_margin=0.05, x_label="Reaction Coordinate", x_label_fontweight="normal", x_label_fontsize=10, x_label_color="black",
-                          y_label=r"$\Delta$G kcal mol$^{-1}$", y_label_fontweight="normal", y_label_fontsize=10, y_label_color="black", point_color="black",
+                          y_label=r"$\Delta$G kcal mol$^{-1}$", y_label_fontweight="normal", y_label_fontsize=10, y_label_color="black",
+                          x_tick_direction="out", x_tick_label_fontsize=10, x_tick_label_color="black", point_color="black",
                           point_alpha=1.0, point_width=0.25, point_distance=0.5, point_linewidth=3,
                           connector_color="black", connector_alpha=0.6, connector_linewidth=1, connector_linestyle="--"):
 
@@ -24,6 +25,7 @@ def plot_reaction_profile(energies, labels=None, title=None, title_fontweight="n
     # Some aesthetic stuff
     ax.spines[['right', 'top']].set_visible(False)
     ax.tick_params(axis='x', which='both', bottom=False, labelbottom=False)
+    ax.tick_params(axis='y', which='both', direction=x_tick_direction, labelsize=x_tick_label_fontsize, labelcolor=x_tick_label_color)
     ax.set_xlabel(x_label, fontweight=x_label_fontweight, size=x_label_fontsize, color=x_label_color)
     ax.set_ylabel(y_label, fontweight=y_label_fontweight, size=y_label_fontsize, color=y_label_color)
     ax.plot(1.0, 0, '>k', transform=ax.transAxes, clip_on=False)
