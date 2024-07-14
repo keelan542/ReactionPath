@@ -13,10 +13,15 @@ def plot_reaction_profile(
     figsize=(7, 5),
     save_file=None,
     show_plot=True,
-    label_offset=0.5,
-    label_fontweight="normal",
-    label_fontsize=10,
-    label_color="black",
+    species_label_offset=0.5,
+    species_label_fontweight="normal",
+    species_label_fontsize=10,
+    species_label_color="black",
+    show_energies=False,
+    energy_label_offset=0.5,
+    energy_label_fontweight="normal",
+    energy_label_fontsize=10,
+    energy_label_color="black",
     x_margin=0.05,
     y_margin=0.05,
     x_label="Reaction Coordinate",
@@ -115,13 +120,29 @@ def plot_reaction_profile(
         for label, energy in zip(labels, energies):
             ax.text(
                 current_position,
-                energy + label_offset,
+                energy + species_label_offset,
                 label,
                 horizontalalignment="center",
                 verticalalignment="bottom",
-                fontweight=label_fontweight,
-                size=label_fontsize,
-                color=label_color,
+                fontweight=species_label_fontweight,
+                size=species_label_fontsize,
+                color=species_label_color,
+            )
+            current_position = current_position + point_width + point_distance
+
+    # Adding energy labels to points if specified
+    if show_energies:
+        current_position = point_width / 2
+        for label, energy in zip(labels, energies):
+            ax.text(
+                current_position,
+                energy - energy_label_offset,
+                energy,
+                horizontalalignment="center",
+                verticalalignment="top",
+                fontweight=energy_label_fontweight,
+                size=energy_label_fontsize,
+                color=energy_label_color,
             )
             current_position = current_position + point_width + point_distance
 
