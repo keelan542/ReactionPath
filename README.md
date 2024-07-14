@@ -16,7 +16,7 @@ path.plot_reaction_profile(energies, labels=labels, title="Example 1")
 # Using many available options to customise look of plot
 path.plot_reaction_profile(energies, labels=labels, show_energies=True, y_margin=0.2,
                            title="Example 2", title_fontsize=16, title_fontweight="bold",
-                           title_color="slateblue", species_label_fontweight="bold", x_tick_direction="inout",
+                           title_color="slateblue", species_label_fontweight="bold", y_tick_direction="inout",
                            point_width=2.0, point_distance=1.5, point_linewidth=1,
                            connector_alpha=1.0, x_label=None)
 
@@ -60,9 +60,9 @@ Many of the below options are just wrappers to common Matplotlib arguments for c
 | y_label_fontweight       | Weight of Y-axis label (Matplotlib valid option)                          | "normal"                     |
 | y_label_fontsize         | Fontsize of Y-axis label (Matplotlib valid option)                        | 10                           |
 | y_label_color            | Color of Y-axis label (Matplotlib valid option)                           | "black"                      |
-| x_tick_direction         | Direction of X-axis tick marks (Matplotlib valid option)                  | "out"                        |
-| x_tick_label_fontsize    | Fontize of X-axis tick labels (Matplotlib valid option)                   | 10                           |
-| x_tick_label_color       | Color of X-axis tick labels (Matplotlib valid option)                     | "black"                      |
+| y_tick_direction         | Direction of Y-axis tick marks (Matplotlib valid option)                  | "out"                        |
+| y_tick_label_fontsize    | Fontize of Y-axis tick labels (Matplotlib valid option)                   | 10                           |
+| y_tick_label_color       | Color of Y-axis tick labels (Matplotlib valid option)                     | "black"                      |
 | point_color              | Color of stationary point (any Matplotlib color)                          | "black"                      |
 | point_alpha              | Opacity of stationary point (0.0 --> 1.0)                                 | 1.0                          |
 | point_width              | Width of stationary point (float)                                         | 0.25                         |
