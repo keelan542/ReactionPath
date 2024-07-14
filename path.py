@@ -4,7 +4,7 @@ from matplotlib.path import Path
 
 def plot_reaction_profile(energies, labels=None, title=None, title_fontweight="normal", title_fontsize=10,
                           title_color="black", figsize=(7,5), save_file=None, show_plot=True,
-                          label_offset=0.5, label_fontweight="normal", label_fontsize=10, x_margin=0.05,
+                          label_offset=0.5, label_fontweight="normal", label_fontsize=10, label_color="black", x_margin=0.05,
                           y_margin=0.05, x_label="Reaction Coordinate", x_label_fontweight="normal", x_label_fontsize=10, x_label_color="black",
                           y_label=r"$\Delta$G kcal mol$^{-1}$", y_label_fontweight="normal", y_label_fontsize=10, y_label_color="black", point_color="black",
                           point_alpha=1.0, point_width=0.25, point_distance=0.5, point_linewidth=3,
@@ -51,7 +51,7 @@ def plot_reaction_profile(energies, labels=None, title=None, title_fontweight="n
         current_position = (point_width / 2)
         for label, energy in zip(labels, energies):
             ax.text(current_position, energy + label_offset, label, horizontalalignment="center",
-                    verticalalignment="bottom", fontweight=label_fontweight, size=label_fontsize)
+                    verticalalignment="bottom", fontweight=label_fontweight, size=label_fontsize, color=label_color)
             current_position = current_position + point_width + point_distance
 
     if save_file is not None:

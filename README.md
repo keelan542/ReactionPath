@@ -38,6 +38,7 @@ path.plot_reaction_profile(energies, labels=labels, label_fontweight="bold", tit
 | label_offset        | How much to offset labels from point (float)                      | 0.5                          |
 | label_fontweight    | Weight of stationary point label text (Matplotlib valid option)   | "normal"                     |
 | label_fontsize      | Fontsize of stationary point label text (Matplotlib valid option) | 10                           |
+| label_color         | Color of stationary point label text (Matplotlib valid option)    | "black"                      |
 | x_margin            | How much margin to put on left and right of plot (float)          | 0.05                         |
 | y_margin            | How much margin to put on top and bottom of plot (float)          | 0.05                         |
 | x_label             | X-axis label (string)                                             | "Reaction Coordinate"        |
