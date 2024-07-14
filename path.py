@@ -33,16 +33,17 @@ def plot_reaction_profile(energies, labels=None, title=None, title_fontweight="n
     ax.margins(x_margin, y_margin)
     ax.set_title(title, fontweight=title_fontweight, size=title_fontsize, color=title_color)
 
-    # Draw dashed connector lines first
-    codes = [Path.MOVETO]
-    codes.extend([Path.LINETO] * (len(points)-1))
-    dashed_path = Path(points, codes)
-    patch = patches.PathPatch(dashed_path, facecolor="none", edgecolor=connector_color, linewidth=connector_linewidth,
-                              linestyle=connector_linestyle, alpha=connector_alpha)
-    ax.add_patch(patch)
+    # Defining list of codes for drawing stationary points and connector lines with Path
+    codes = [Path.MOVETO, Path.LINETO]
+
+    # Draw lines connecting stationary points
+    for i in range(1, len(points)-1, 2):
+        dashed_path = Path(points[i:i+2], codes)
+        patch = patches.PathPatch(dashed_path, facecolor="none", edgecolor=connector_color,
+                                  linewidth=connector_linewidth, linestyle=connector_linestyle, alpha=connector_alpha)
+        ax.add_patch(patch)
 
     # Draw stationary point bolded lines next
-    codes = [Path.MOVETO, Path.LINETO]
     for i in range(0, len(points), 2):
         path = Path(points[i:i+2], codes)
         patch = patches.PathPatch(path, facecolor="none", edgecolor=point_color, linewidth=point_linewidth, alpha=point_alpha)
