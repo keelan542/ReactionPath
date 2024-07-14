@@ -29,6 +29,7 @@ path.plot_reaction_profile(energies, labels=labels, show_energies=True, y_margin
 
 ### Options
 
+Many of the below options are just wrappers to common Matplotlib arguments for customising the look of the plot. In theory, any Matplotlib option could be implemented easily.
 
 | Argument                 | Explanation                                                               | Default Value                |
 |--------------------------|---------------------------------------------------------------------------|------------------------------|
