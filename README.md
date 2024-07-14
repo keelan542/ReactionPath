@@ -10,7 +10,10 @@ import path
 labels = ["R","I1","TS1","I2","TS2","I3","TS3","P"]
 energies = [0.0, 5.0, 30.0, -20.0, 10.0, -30.0, 5.0, -40.0]
 
+# Minmial options
 path.plot_reaction_profile(energies, labels=labels, title="Example 1")
+
+# Using many available options to customise look of plot
 path.plot_reaction_profile(energies, labels=labels, show_energies=True, y_margin=0.2,
                            title="Example 2", title_fontsize=16, title_fontweight="bold",
                            title_color="slateblue", species_label_fontweight="bold", x_tick_direction="inout",
