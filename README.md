@@ -41,6 +41,8 @@ Many of the below options are just wrappers to common Matplotlib arguments for c
 | title_color              | Color of title (Matplotlib valid option)                                  | "black"                      |
 | figsize                  | Size of figure (tuple (width,height) in inches)                           | (7,5)                        |
 | save_file                | Name of image to be saved (string) - Will not save if None                | None                         |
+| is_transparent           | Whether to make exported image transparent (bool)                         | False                        |
+| image_dpi                | DPI of exported image (Matplotlib valid option)                           | "figure"                     |
 | show_plot                | Whether to show plot (boolean)                                            | True                         |
 | species_label_offset     | How much to offset species labels from point (float)                      | 0.5                          |
 | species_label_fontweight | Weight of stationary point species label text (Matplotlib valid option)   | "normal"                     |

@@ -12,6 +12,8 @@ def plot_reaction_profile(
     title_color="black",
     figsize=(7, 5),
     save_file=None,
+    is_transparent=False,
+    image_dpi="figure",
     show_plot=True,
     species_label_offset=0.5,
     species_label_fontweight="normal",
@@ -147,7 +149,7 @@ def plot_reaction_profile(
             current_position = current_position + point_width + point_distance
 
     if save_file is not None:
-        plt.savefig(save_file)
+        plt.savefig(save_file, transparent=is_transparent, dpi=image_dpi)
 
     if show_plot:
         plt.show()
