@@ -5,7 +5,7 @@ Requires Matplotlib.
 
 ### Example Inputs
 ```
-import path
+import reaction_path
 
 labels = ["R","I1","TS1","I2","TS2","I3","TS3","P"]
 energies = [0.0, 5.0, 30.0, -20.0, 10.0, -30.0, 5.0, -40.0]

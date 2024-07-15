@@ -63,9 +63,9 @@ def plot_reaction_profile(
     ax.tick_params(
         axis="y",
         which="both",
-        direction=x_tick_direction,
-        labelsize=x_tick_label_fontsize,
-        labelcolor=x_tick_label_color,
+        direction=y_tick_direction,
+        labelsize=y_tick_label_fontsize,
+        labelcolor=y_tick_label_color,
     )
     ax.set_xlabel(
         x_label,
