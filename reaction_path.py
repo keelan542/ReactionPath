@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.path import Path
+from matplotlib.lines import Line2D
 
 
 def create_stationary_coords(energies, point_width, point_distance):
@@ -29,6 +30,13 @@ def draw_on_plot(
             alpha=alpha,
         )
         ax.add_patch(patch)
+
+def create_legend_lines(legend_length, point_color):
+    lines = []
+    for i in range(legend_length):
+        lines.append(Line2D([0], [0], color=point_color[i], lw=2))
+
+    return lines
 
 def plot_reaction_profile(
     energies,
