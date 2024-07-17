@@ -70,6 +70,7 @@ Many of the below options are just wrappers to common Matplotlib arguments for c
 | point_width              | Width of stationary point (float)                                         | 0.25                         |
 | point_distance           | Distance between stationary points (float)                                | 0.5                          |
 | point_linewidth          | Linewidth of stationary point (float)                                     | 3                            |
+| point_linestyle          | Linestyle of stationary point (Matplotlib valid option)                   | 3                            |
 | connector_color          | Color of connector lines (Matplotlib valid color)                         | "black"                      |
 | connector_alpha          | Opacity of connector lines (0.0 --> 1.0)                                  | 0.6                          |
 | connector_linewidth      | Linewidth of connector lines (float)                                      | 1                            |

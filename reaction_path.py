@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.path import Path
 
+
 def create_stationary_coords(energies, point_width, point_distance):
     points = []
     position = 0.0
@@ -12,6 +13,7 @@ def create_stationary_coords(energies, point_width, point_distance):
         position += point_width + point_distance
 
     return points
+
 
 def plot_reaction_profile(
     energies,
@@ -52,6 +54,7 @@ def plot_reaction_profile(
     point_width=0.25,
     point_distance=0.5,
     point_linewidth=3,
+    point_linestyle="-",
     connector_color="black",
     connector_alpha=0.6,
     connector_linewidth=1,
@@ -97,6 +100,7 @@ def plot_reaction_profile(
     codes = [Path.MOVETO, Path.LINETO]
 
     # Draw lines connecting stationary points
+    #draw_on_plot(points, facecolor="none", edgecolor=connector_color, linewidth=connector_linewidth, linestyle=connector_linestyle, alpha=connector_alpha)
     for i in range(1, len(points) - 1, 2):
         dashed_path = Path(points[i : i + 2], codes)
         patch = patches.PathPatch(
@@ -117,6 +121,7 @@ def plot_reaction_profile(
             facecolor="none",
             edgecolor=point_color,
             linewidth=point_linewidth,
+            linestyle=point_linestyle,
             alpha=point_alpha,
         )
         ax.add_patch(patch)
