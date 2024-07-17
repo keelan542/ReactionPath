@@ -42,6 +42,7 @@ def plot_reaction_profile(
     energies,
     species_labels=None,
     legend_labels=None,
+    same_ref=False,
     title=None,
     title_fontweight="normal",
     title_fontsize=10,
@@ -151,12 +152,17 @@ def plot_reaction_profile(
             alpha=connector_alpha,
         )
 
+        if same_ref and i > 0:
+            start = 2
+        else:
+            start = 0
+
         # Draw stationary pathway_points
         draw_on_plot(
             ax,
             pathway,
             codes,
-            0,
+            start,
             len(pathway),
             facecolor="none",
             edgecolor=point_color[i],

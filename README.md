@@ -36,6 +36,7 @@ Many of the below options are just wrappers to common Matplotlib arguments for c
 | energies                 | List of energies (list of floats)                                                                                                                   | -                            |
 | species_labels           | List of labels (list of strings) or list of lists of labels (if multiple pathways requested)                                                        | None                         |
 | legend_labels            | List of labels for legend (list of strings)                                                                                                         | None                         |
+| same_ref                 | Whether the pathways if multiple have the same reference point (bool)                                                                               | False                        |
 | title                    | Title of plot (string)                                                                                                                              | None                         |
 | title_fontweight         | Weight of title (Matplotlib valid option)                                                                                                           | "normal"                     |
 | title_fontsize           | Fontsize of title (Matplotlib valid option)                                                                                                         | 10                           |
