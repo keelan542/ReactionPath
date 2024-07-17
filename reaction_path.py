@@ -2,6 +2,16 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.path import Path
 
+def create_stationary_coords(energies, point_width, point_distance):
+    points = []
+    position = 0.0
+
+    for point in energies:
+        points.append((position, point))
+        points.append((position + point_width, point))
+        position += point_width + point_distance
+
+    return points
 
 def plot_reaction_profile(
     energies,
@@ -49,12 +59,7 @@ def plot_reaction_profile(
 ):
 
     # Creating xy coordinates for drawing reaction path
-    points = []
-    position = 0.0
-    for point in energies:
-        points.append((position, point))
-        points.append((position + point_width, point))
-        position += point_width + point_distance
+    points = create_stationary_coords(energies, point_width, point_distance)
 
     # Creating figure and axes
     fig, ax = plt.subplots(figsize=figsize)
