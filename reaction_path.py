@@ -90,7 +90,7 @@ def plot_reaction_profile(
     # Creating figure and axes
     fig, ax = plt.subplots(figsize=figsize)
 
-    # Some aesthetic stuff
+    # General options how axes and title look
     ax.spines[["right", "top"]].set_visible(False)
     ax.tick_params(axis="x", which="both", bottom=False, labelbottom=False)
     ax.tick_params(
@@ -144,10 +144,10 @@ def plot_reaction_profile(
         0,
         len(pathway_points),
         facecolor="none",
-        edgecolor=connector_color,
-        linewidth=connector_linewidth,
-        linestyle=connector_linestyle,
-        alpha=connector_alpha,
+        edgecolor=point_color,
+        linewidth=point_linewidth,
+        linestyle=point_linestyle,
+        alpha=point_alpha,
     )
 
     # Adding labels to pathway_points if provided
