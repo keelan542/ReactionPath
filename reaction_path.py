@@ -78,7 +78,12 @@ def plot_reaction_profile(
 ):
 
     # Creating xy coordinates for drawing reaction path
-    points = create_stationary_coords(energies, point_width, point_distance)
+    if isinstance(energies[0], list):
+        pathway_points = []
+        for pathway in energies:
+            pathway_points.append(create_stationary_coords(pathway, point_width, point_distance))
+    else:
+        pathway_points = create_stationary_coords(energies, point_width, point_distance)
 
     # Creating figure and axes
     fig, ax = plt.subplots(figsize=figsize)
@@ -112,16 +117,16 @@ def plot_reaction_profile(
         title, fontweight=title_fontweight, size=title_fontsize, color=title_color
     )
 
-    # Defining list of codes for drawing stationary points and connector lines with Path
+    # Defining list of codes for drawing stationary pathway_points and connector lines with Path
     codes = [Path.MOVETO, Path.LINETO]
 
-    # Draw lines connecting stationary points
+    # Draw lines connecting stationary pathway_points
     draw_on_plot(
         ax,
-        points,
+        pathway_points,
         codes,
         1,
-        len(points) - 1,
+        len(pathway_points) - 1,
         facecolor="none",
         edgecolor=connector_color,
         linewidth=connector_linewidth,
@@ -129,13 +134,13 @@ def plot_reaction_profile(
         alpha=connector_alpha,
     )
 
-    # Draw stationary points
+    # Draw stationary pathway_points
     draw_on_plot(
         ax,
-        points,
+        pathway_points,
         codes,
         0,
-        len(points),
+        len(pathway_points),
         facecolor="none",
         edgecolor=connector_color,
         linewidth=connector_linewidth,
@@ -143,7 +148,7 @@ def plot_reaction_profile(
         alpha=connector_alpha,
     )
 
-    # Adding labels to points if provided
+    # Adding labels to pathway_points if provided
     if labels is not None:
         current_position = point_width / 2
         for label, energy in zip(labels, energies):
@@ -159,10 +164,10 @@ def plot_reaction_profile(
             )
             current_position = current_position + point_width + point_distance
 
-    # Adding energy labels to points if specified
+    # Adding energy labels to pathway_points if specified
     if show_energies:
         current_position = point_width / 2
-        for label, energy in zip(labels, energies):
+        for energy in energies:
             ax.text(
                 current_position,
                 energy - energy_label_offset,
