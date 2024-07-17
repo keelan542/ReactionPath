@@ -31,12 +31,14 @@ def draw_on_plot(
         )
         ax.add_patch(patch)
 
+
 def create_legend_lines(legend_length, point_color):
     lines = []
     for i in range(legend_length):
         lines.append(Line2D([0], [0], color=point_color[i], lw=2))
 
     return lines
+
 
 def plot_reaction_profile(
     energies,
@@ -173,7 +175,9 @@ def plot_reaction_profile(
 
     # Adding labels if provided
     if species_labels is not None:
-        for i, (pathway_labels, pathway_energies) in enumerate(zip(species_labels, energies)):
+        for i, (pathway_labels, pathway_energies) in enumerate(
+            zip(species_labels, energies)
+        ):
             current_position = point_width / 2
             for j, (label, energy) in enumerate(zip(pathway_labels, pathway_energies)):
 
