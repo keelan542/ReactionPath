@@ -40,7 +40,8 @@ def create_legend_lines(legend_length, point_color):
 
 def plot_reaction_profile(
     energies,
-    labels=None,
+    species_labels=None,
+    legend_labels=None,
     title=None,
     title_fontweight="normal",
     title_fontsize=10,
@@ -87,7 +88,7 @@ def plot_reaction_profile(
     # Creating xy coordinates for drawing reaction path
     if not isinstance(energies[0], list):
         energies = [energies]
-        labels = [labels]
+        species_labels = [species_labels]
 
     pathway_points = []
     for pathway in energies:
@@ -165,8 +166,8 @@ def plot_reaction_profile(
         )
 
     # Adding labels if provided
-    if labels is not None:
-        for pathway_labels, pathway_energies in zip(labels, energies):
+    if species_labels is not None:
+        for pathway_labels, pathway_energies in zip(species_labels, energies):
             current_position = point_width / 2
             for label, energy in zip(pathway_labels, pathway_energies):
                 ax.text(
@@ -197,6 +198,11 @@ def plot_reaction_profile(
                     color=energy_label_color,
                 )
                 current_position = current_position + point_width + point_distance
+
+    # Adding legend if requested
+    if legend_labels is not None:
+        lines = create_legend_lines(len(pathway_points), point_color)
+        ax.legend(lines, legend_labels)
 
     if save_file is not None:
         plt.savefig(save_file, transparent=is_transparent, dpi=image_dpi)
