@@ -173,9 +173,13 @@ def plot_reaction_profile(
 
     # Adding labels if provided
     if species_labels is not None:
-        for pathway_labels, pathway_energies in zip(species_labels, energies):
+        for i, (pathway_labels, pathway_energies) in enumerate(zip(species_labels, energies)):
             current_position = point_width / 2
-            for label, energy in zip(pathway_labels, pathway_energies):
+            for j, (label, energy) in enumerate(zip(pathway_labels, pathway_energies)):
+
+                if i > 0 and j == 0 and same_ref:
+                    label = None
+
                 ax.text(
                     current_position,
                     energy + species_label_offset,
@@ -190,13 +194,19 @@ def plot_reaction_profile(
 
     # Adding energy labels if provided
     if show_energies:
-        for pathway_energies in energies:
+        for i, pathway_energies in enumerate(energies):
             current_position = point_width / 2
-            for energy in pathway_energies:
+            for j, energy in enumerate(pathway_energies):
+
+                energy_label = energy
+
+                if i > 0 and j == 0 and same_ref:
+                    energy_label = None
+
                 ax.text(
                     current_position,
                     energy - energy_label_offset,
-                    energy,
+                    energy_label,
                     horizontalalignment="center",
                     verticalalignment="top",
                     fontweight=energy_label_fontweight,
