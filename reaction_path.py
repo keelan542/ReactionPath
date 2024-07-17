@@ -79,12 +79,14 @@ def plot_reaction_profile(
 
     # Creating xy coordinates for drawing reaction path
     if isinstance(energies[0], list):
+        mult_pathways = True
         pathway_points = []
         for pathway in energies:
             pathway_points.append(
                 create_stationary_coords(pathway, point_width, point_distance)
             )
     else:
+        mult_pathways = False
         pathway_points = create_stationary_coords(energies, point_width, point_distance)
 
     # Creating figure and axes
@@ -122,65 +124,128 @@ def plot_reaction_profile(
     # Defining list of codes for drawing stationary pathway_points and connector lines with Path
     codes = [Path.MOVETO, Path.LINETO]
 
-    # Draw lines connecting stationary pathway_points
-    draw_on_plot(
-        ax,
-        pathway_points,
-        codes,
-        1,
-        len(pathway_points) - 1,
-        facecolor="none",
-        edgecolor=connector_color,
-        linewidth=connector_linewidth,
-        linestyle=connector_linestyle,
-        alpha=connector_alpha,
-    )
+    # Checking if multiple pathways are to be plotted
+    if mult_pathways:
+        for pathway in pathway_points:
+            # Draw lines connecting stationary pathway_points
+            draw_on_plot(
+                ax,
+                pathway,
+                codes,
+                1,
+                len(pathway) - 1,
+                facecolor="none",
+                edgecolor=connector_color,
+                linewidth=connector_linewidth,
+                linestyle=connector_linestyle,
+                alpha=connector_alpha,
+            )
 
-    # Draw stationary pathway_points
-    draw_on_plot(
-        ax,
-        pathway_points,
-        codes,
-        0,
-        len(pathway_points),
-        facecolor="none",
-        edgecolor=point_color,
-        linewidth=point_linewidth,
-        linestyle=point_linestyle,
-        alpha=point_alpha,
-    )
+            # Draw stationary pathway_points
+            draw_on_plot(
+                ax,
+                pathway,
+                codes,
+                0,
+                len(pathway),
+                facecolor="none",
+                edgecolor=point_color,
+                linewidth=point_linewidth,
+                linestyle=point_linestyle,
+                alpha=point_alpha,
+            )
+    else:
+        # Draw lines connecting stationary pathway_points
+        draw_on_plot(
+            ax,
+            pathway_points,
+            codes,
+            1,
+            len(pathway_points) - 1,
+            facecolor="none",
+            edgecolor=connector_color,
+            linewidth=connector_linewidth,
+            linestyle=connector_linestyle,
+            alpha=connector_alpha,
+        )
 
-    # Adding labels to pathway_points if provided
+        # Draw stationary pathway_points
+        draw_on_plot(
+            ax,
+            pathway_points,
+            codes,
+            0,
+            len(pathway_points),
+            facecolor="none",
+            edgecolor=point_color,
+            linewidth=point_linewidth,
+            linestyle=point_linestyle,
+            alpha=point_alpha,
+        )
+
+    # Adding labels if provided
     if labels is not None:
-        current_position = point_width / 2
-        for label, energy in zip(labels, energies):
-            ax.text(
-                current_position,
-                energy + species_label_offset,
-                label,
-                horizontalalignment="center",
-                verticalalignment="bottom",
-                fontweight=species_label_fontweight,
-                size=species_label_fontsize,
-                color=species_label_color,
-            )
-            current_position = current_position + point_width + point_distance
+        if mult_pathways:
+            for pathway_labels, pathway_energies in zip(labels, energies):
+                current_position = point_width / 2
+                for label, energy in zip(pathway_labels, pathway_energies):
+                    ax.text(
+                        current_position,
+                        energy + species_label_offset,
+                        label,
+                        horizontalalignment="center",
+                        verticalalignment="bottom",
+                        fontweight=species_label_fontweight,
+                        size=species_label_fontsize,
+                        color=species_label_color,
+                    )
+                    current_position = current_position + point_width + point_distance
+        else:
+            current_position = point_width / 2
+            for label, energy in zip(labels, energies):
+                ax.text(
+                    current_position,
+                    energy + species_label_offset,
+                    label,
+                    horizontalalignment="center",
+                    verticalalignment="bottom",
+                    fontweight=species_label_fontweight,
+                    size=species_label_fontsize,
+                    color=species_label_color,
+                )
+                current_position = current_position + point_width + point_distance
 
-    # Adding energy labels to pathway_points if specified
+    # Adding energy labels if provided
     if show_energies:
-        current_position = point_width / 2
-        for energy in energies:
-            ax.text(
-                current_position,
-                energy - energy_label_offset,
-                energy,
-                horizontalalignment="center",
-                verticalalignment="top",
-                fontweight=energy_label_fontweight,
-                size=energy_label_fontsize,
-                color=energy_label_color,
-            )
-            current_position = current_position + point_width + point_distance
+        if mult_pathways:
+            for pathway_energies in energies:
+                current_position = point_width / 2
+                for energy in pathway_energies:
+                    ax.text(
+                        current_position,
+                        energy - energy_label_offset,
+                        energy,
+                        horizontalalignment="center",
+                        verticalalignment="top",
+                        fontweight=energy_label_fontweight,
+                        size=energy_label_fontsize,
+                        color=energy_label_color,
+                    )
+                    current_position = current_position + point_width + point_distance
+        else:
+            current_position = point_width / 2
+            for energy in energies:
+                ax.text(
+                    current_position,
+                    energy - energy_label_offset,
+                    energy,
+                    horizontalalignment="center",
+                    verticalalignment="top",
+                    fontweight=energy_label_fontweight,
+                    size=energy_label_fontsize,
+                    color=energy_label_color,
+                )
+                current_position = current_position + point_width + point_distance
 
     if save_file is not None:
         plt.savefig(save_file, transparent=is_transparent, dpi=image_dpi)
