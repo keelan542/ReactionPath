@@ -81,7 +81,9 @@ def plot_reaction_profile(
     if isinstance(energies[0], list):
         pathway_points = []
         for pathway in energies:
-            pathway_points.append(create_stationary_coords(pathway, point_width, point_distance))
+            pathway_points.append(
+                create_stationary_coords(pathway, point_width, point_distance)
+            )
     else:
         pathway_points = create_stationary_coords(energies, point_width, point_distance)
 
