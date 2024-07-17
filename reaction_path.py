@@ -15,6 +15,22 @@ def create_stationary_coords(energies, point_width, point_distance):
     return points
 
 
+def draw_on_plot(
+    ax, points, codes, start, length, facecolor, edgecolor, linewidth, linestyle, alpha
+):
+    for i in range(start, length, 2):
+        current_path = Path(points[i : i + 2], codes)
+        patch = patches.PathPatch(
+            current_path,
+            facecolor=facecolor,
+            edgecolor=edgecolor,
+            linewidth=linewidth,
+            linestyle=linestyle,
+            alpha=alpha,
+        )
+        ax.add_patch(patch)
+
+
 def plot_reaction_profile(
     energies,
     labels=None,
@@ -100,31 +116,32 @@ def plot_reaction_profile(
     codes = [Path.MOVETO, Path.LINETO]
 
     # Draw lines connecting stationary points
-    #draw_on_plot(points, facecolor="none", edgecolor=connector_color, linewidth=connector_linewidth, linestyle=connector_linestyle, alpha=connector_alpha)
-    for i in range(1, len(points) - 1, 2):
-        dashed_path = Path(points[i : i + 2], codes)
-        patch = patches.PathPatch(
-            dashed_path,
-            facecolor="none",
-            edgecolor=connector_color,
-            linewidth=connector_linewidth,
-            linestyle=connector_linestyle,
-            alpha=connector_alpha,
-        )
-        ax.add_patch(patch)
+    draw_on_plot(
+        ax,
+        points,
+        codes,
+        1,
+        len(points) - 1,
+        facecolor="none",
+        edgecolor=connector_color,
+        linewidth=connector_linewidth,
+        linestyle=connector_linestyle,
+        alpha=connector_alpha,
+    )
 
-    # Draw stationary point bolded lines next
-    for i in range(0, len(points), 2):
-        path = Path(points[i : i + 2], codes)
-        patch = patches.PathPatch(
-            path,
-            facecolor="none",
-            edgecolor=point_color,
-            linewidth=point_linewidth,
-            linestyle=point_linestyle,
-            alpha=point_alpha,
-        )
-        ax.add_patch(patch)
+    # Draw stationary points
+    draw_on_plot(
+        ax,
+        points,
+        codes,
+        0,
+        len(points),
+        facecolor="none",
+        edgecolor=connector_color,
+        linewidth=connector_linewidth,
+        linestyle=connector_linestyle,
+        alpha=connector_alpha,
+    )
 
     # Adding labels to points if provided
     if labels is not None:
