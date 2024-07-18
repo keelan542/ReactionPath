@@ -31,7 +31,7 @@ Many of the below options are just wrappers to common Matplotlib arguments for c
 | title_fontweight         | Weight of title (Matplotlib valid option)                                                                                                           | "normal"                     |
 | title_fontsize           | Fontsize of title (Matplotlib valid option)                                                                                                         | 10                           |
 | title_color              | Color of title (Matplotlib valid option)                                                                                                            | "black"                      |
-| figsize                  | Size of figure (tuple (width,height) in inches)                                                                                                     | (7,5)                        |
+| figsize                  | Size of figure (tuple (width,height) in inches)                                                                                                     | (6,4)                        |
 | save_file                | Name of image to be saved (string) - Will not save if None                                                                                          | None                         |
 | is_transparent           | Whether to make exported image transparent (bool)                                                                                                   | False                        |
 | image_dpi                | DPI of exported image (Matplotlib valid option)                                                                                                     | "figure"                     |
