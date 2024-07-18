@@ -91,7 +91,8 @@ def plot_reaction_profile(
     # Creating xy coordinates for drawing reaction path
     if not isinstance(energies[0], list):
         energies = [energies]
-        species_labels = [species_labels]
+        if species_labels is not None:
+            species_labels = [species_labels]
 
     pathway_points = []
     for pathway in energies:
