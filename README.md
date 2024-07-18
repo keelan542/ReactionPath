@@ -7,25 +7,15 @@ Requires Matplotlib.
 ```
 import reaction_path
 
-labels = ["R","I1","TS1","I2","TS2","I3","TS3","P"]
-energies = [0.0, 5.0, 30.0, -20.0, 10.0, -30.0, 5.0, -40.0]
+labels = ["R","TS","P"]
+energies = [0.0, 30.0, -20.0]
 
-# Minimal options
-path.plot_reaction_profile(energies, labels=labels, title="Example 1")
-
-# Using many available options to customise look of plot
-path.plot_reaction_profile(energies, species_labels=labels, show_energies=True, y_margin=0.2,
-                           title="Example 2", title_fontsize=16, title_fontweight="bold",
-                           title_color="slateblue", species_label_fontweight="bold", y_tick_direction="inout",
-                           point_width=2.0, point_distance=1.5, point_linewidth=1,
-                           connector_alpha=1.0, x_label=None)
-
+# Minimal example
+reaction_path.plot_reaction_profile(energies)
 ```
 
 ### Example Outputs:
 ![Example 1](examples/example1.png)
-
-![Example 2](examples/example2.png)
 
 ### Options
 
