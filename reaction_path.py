@@ -49,7 +49,7 @@ def plot_reaction_profile(
     title_fontweight="normal",
     title_fontsize=10,
     title_color="black",
-    figsize=(7, 5),
+    figsize=(6, 4),
     save_file=None,
     is_transparent=False,
     image_dpi="figure",
