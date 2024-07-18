@@ -15,7 +15,7 @@ reaction_path.plot_reaction_profile(energies)
 ```
 
 ### Example Outputs:
-![Example 1](examples/example1.png)
+<img src="examples/example1.png" width=60%>
 
 ### Options
 
