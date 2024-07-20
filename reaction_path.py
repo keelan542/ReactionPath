@@ -139,7 +139,7 @@ def plot_reaction_profile(
     for i, pathway in enumerate(pathway_points):
         # Checking if point_colors is string or list
         if not isinstance(point_color, list):
-            point_color = [point_color]
+            point_color = [point_color] * len(energies)
 
         # Draw lines connecting stationary pathway_points
         draw_on_plot(
